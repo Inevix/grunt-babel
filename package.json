@@ -1,9 +1,9 @@
 {
-  "name": "grunt-babel",
+  "name": "grunt-m2babel",
   "version": "8.0.0",
   "description": "Use next generation JavaScript, today",
   "license": "MIT",
-  "repository": "babel/grunt-babel",
+  "repository": "Inevix/grunt-babel",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
@@ -15,7 +15,8 @@
   "scripts": {
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "test": "yarn lint && grunt"
+    "test": "yarn lint && grunt",
+    "postinstall": "cp configs/* $INIT_CWD/dev/tools/grunt/configs/"
   },
   "files": [
     "tasks"
@@ -31,7 +32,8 @@
     "codegen",
     "desugaring",
     "javascript",
-    "compiler"
+    "compiler",
+    "magento"
   ],
   "peerDependencies": {
     "@babel/core": "^7.0.0",
