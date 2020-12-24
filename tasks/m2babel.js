@@ -24,7 +24,7 @@ if (/^6\./.test(babel.version)) {
 
 module.exports = function(grunt) {
   grunt.registerMultiTask(
-    "babel",
+    "m2babel",
     "Use next generation JavaScript, today",
     function() {
       const done = this.async();
