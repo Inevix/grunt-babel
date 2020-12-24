@@ -1,74 +1,63 @@
-> This readme is for grunt-babel v8 + Babel v7
-> Check the [7.x branch](https://github.com/babel/grunt-babel/tree/7.x) for docs with Babel v6
+# Grunt babel for Magento 2
+#### Forked from grunt-babel
+<hr/>
 
-# grunt-babel [![Build Status](https://travis-ci.org/babel/grunt-babel.svg?branch=master)](https://travis-ci.org/babel/grunt-babel)
+### Origin package
 
-> Use next generation JavaScript, today, with [Babel](https://babeljs.io)
+https://github.com/babel/grunt-babel
 
-*Issues with the output should be reported on the Babel [issue tracker](https://github.com/babel/babel/issues).*
+## Installation
 
-## Install
-
-For Babel 7.x and grunt-babel v8
 ```sh
-$ yarn add --dev grunt-babel @babel/core @babel/preset-env
+$ npm install --save-dev grunt-m2babel @babel/core @babel/preset-env
 ```
-
-For Babel 6.x and grunt-babel v7
+or
 ```sh
-$ yarn add --dev grunt-babel@7 babel-core babel-preset-env
-```
-Note: See the [7.x branch](https://github.com/babel/grunt-babel/tree/7.x) for more examples of
-usage of Babel 6.x. This README is primarily applicable for Babel 7.x
-
-## Usage
-
-### Option with load-grunt-tasks
-```js
-require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
-
-grunt.initConfig({
-  babel: {
-    options: {
-      sourceMap: true,
-      presets: ['@babel/preset-env']
-    },
-    dist: {
-      files: {
-        'dist/app.js': 'src/app.js'
-      }
-    }
-  }
-});
-
-grunt.registerTask('default', ['babel']);
+$ yarn add --dev grunt-m2babel @babel/core @babel/preset-env
 ```
 
-### Option with loadNpmTasks
-```js
-grunt.initConfig({
-  babel: {
-    options: {
-      sourceMap: true,
-      presets: ['@babel/preset-env']
-    },
-    dist: {
-      files: {
-        'dist/app.js': 'src/app.js'
-      }
-    }
-  }
-});
+## Prepare source files in a theme's folder
 
-grunt.loadNpmTasks('grunt-babel');
+Add all source scripts to the folder in all modules `web/js/source` of a created theme.<br/>
 
-grunt.registerTask('default', ['babel']);
+#### Example
+Source
+```
+app/design/frontend/{vendor}/{theme}/Magento_Theme/web/js/source/view/messages-mixin.js
+```
+Will be compiled to
+```
+app/design/frontend/{vendor}/{theme}/Magento_Theme/web/js/view/messages-mixin.js
 ```
 
-## Options
+The module `grunt-m2babel` will run for all themes which added to
+```
+dev/tools/grunt/configs/themes.js
+```
+or
+```
+dev/tools/grunt/configs/local-themes.js
+```
+if the file `local-themes.js` was added to a content of the file `grunt-config.json` in the root folder of a project.
 
-See the Babel [options](https://babeljs.io/docs/en/options), except for `filename` which is handled for you.
+## How to use
 
-## License
+Now you can use ES6 syntax in any files in your theme which added to the folder
+`web/js/source/**/*.js` in any modules of your theme.
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+#### Just run the command in a terminal to build scripts:
+```
+grunt m2babel
+```
+
+The config of the Grunt’s watcher has been rewritten and after adding changes for scripts in source folders of your theme scripts will be rebuilt.
+
+#### Just run the watcher via the command in a terminal:
+```
+grunt watch
+```
+
+## Links
+
+https://www.npmjs.com/package/grunt-babel
+https://www.npmjs.com/package/grunt-m2babel
