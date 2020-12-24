@@ -1,6 +1,6 @@
 {
   "name": "grunt-m2babel",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Use next generation JavaScript, today",
   "license": "MIT",
   "repository": "Inevix/grunt-babel",
@@ -19,7 +19,8 @@
     "postinstall": "cp configs/* $INIT_CWD/dev/tools/grunt/configs/"
   },
   "files": [
-    "tasks"
+    "tasks",
+    "configs"
   ],
   "keywords": [
     "gruntplugin",
